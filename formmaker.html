@@ -1,0 +1,72 @@
+<html>
+<head>
+	<title>Form Maker</title>
+	<link rel="stylesheet" type="text/css" href="css/formmaker.css">
+	<link href="https://fonts.googleapis.com/css?family=Abel|Quicksand" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript">
+		function validateForm() {
+			var htmlstring= document.getElementById('myform').innerHTML;
+			htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,'');
+			if(htmlstring == '')
+			{
+				alert("Select fields properly!");
+				return false;
+			}
+			else{
+			    if(m==1 || n==1)
+			    {
+			    	alert("Must Select Name and Heading!");
+			    }
+			    var x = document.forms["f"]["elen_1"].value;
+			    if (x == "") {
+			        alert("Name must be filled properly");
+			        return false;
+			    }
+			    var x = document.forms["f"]["eleh_1"].value;
+			    if (x == "") {
+			        alert("Heading must be filled properly");
+			        return false;
+			    }
+			    if((!document.f.radio[0].checked)&&(!document.f.radio[1].checked)&&(!document.f.radio[2].checked)){
+			    	alert("Layout must be filled properly");
+			        return false;
+			    }
+		    }
+        }
+	</script>
+</head>
+<body>
+			<div class="one">
+				<h2>Fields in Form</h2>
+				<button onclick="namef()">Name</button>
+				<button onclick="heading()">Heading</button>
+				<button onclick="inputfield()">Input field</button>
+				<button onclick="radiofield()">Radio field</button>
+				<button onclick="checkboxfield()">Checkbox field</button>
+				<button onclick="reset()">Reset</button>
+			</div>
+			<div class="two">
+				<center>
+					<h2>Your Dynamic Form!</h2>
+					<form name='f' method="post" action="Myform.php" onsubmit="return validateForm();">
+						<button style="width:200px;height: 60px;"><span style="color:white;font-family: 'Quicksand">Layout<br>
+							<input type="radio" name="radio" value="1">CSS1
+							<input type="radio" name="radio" value="2">CSS2
+							<input type="radio" name="radio" value="3">CSS3
+							</span>
+					    </button> <br>
+						<span id="myform">
+						</span>
+					    <input type="hidden" name="j_value" id="j_value">
+						<input type="hidden" name="k_value" id="k_value">
+						<input type="hidden" name="l_value" id="l_value">
+						<center>
+						    <input type="submit" name="submit" value="Submit" >
+					    </center>
+					</form>
+				</center>
+			</div>
+</body>
+</html>
